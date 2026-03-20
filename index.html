@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sheet Verse</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+
+<div class="topbar">
+  <span class="menu-btn" onclick="toggleMenu()">☰</span>
+  <span class="title">Sheet Verse</span>
+
+  <button onclick="newFile()">New</button>
+  <button onclick="saveLocal()">Save</button>
+  <button onclick="downloadCSV()">Download</button>
+  <button onclick="saveToDrive()">Drive Save</button>
+
+  <input type="file" onchange="loadFile(event)">
+</div>
+
+<div id="tabs"></div>
+<div id="grid"></div>
+
+<!-- Side Menu -->
+<div id="sideMenu" class="side-menu">
+  <h3>Menu</h3>
+  <button onclick="addSheet()">+ New Sheet</button>
+  <button onclick="loadLocal()">Load Local</button>
+  <button onclick="listDriveFiles()">My Drive Files</button>
+  <button onclick="showAbout()">About</button>
+
+  <div id="loginSection">
+    <div id="g_id_onload"
+      data-client_id="YOUR_GOOGLE_CLIENT_ID"
+      data-callback="handleCredentialResponse">
+    </div>
+    <div class="g_id_signin"></div>
+  </div>
+</div>
+
+<!-- Overlay -->
+<div id="overlay" class="overlay" onclick="closeOverlay()">
+  <div class="overlay-content" onclick="event.stopPropagation()">
+    <h2>About Sheet Verse</h2>
+    <p>Excel + Google Sheets inspired lightweight app with local + Drive storage.</p>
+    <button onclick="closeOverlay()">Close</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+<script src="formulas.js"></script>
+<script src="drive.js"></script>
+</body>
+  </html>
