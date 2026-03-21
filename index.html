@@ -3,25 +3,58 @@
 <head>
   <title>Sheet Verse</title>
 
-  <!-- Luckysheet -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/luckysheet/dist/plugins/css/plugins.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/luckysheet/dist/plugins/plugins.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/luckysheet/dist/css/luckysheet.css" />
+  <!-- MOBILE ZOOM FIX -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
+  <!-- Luckysheet CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/luckysheet/dist/plugins/css/plugins.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/luckysheet/dist/plugins/plugins.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/luckysheet/dist/css/luckysheet.css">
+
+  <!-- Icons FIX -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Luckysheet JS -->
   <script src="https://cdn.jsdelivr.net/npm/luckysheet/dist/plugins/js/plugin.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/luckysheet/dist/luckysheet.umd.js"></script>
 
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<!-- Topbar -->
+<!-- TOPBAR -->
 <div class="topbar">
   <span onclick="toggleMenu()">☰</span>
   <span class="title">Sheet Verse</span>
 </div>
 
-<!-- Overlay Menu -->
+<!-- CUSTOM TOOLBAR -->
+<div class="toolbar">
+
+  <!-- TEXT -->
+  <div class="group">
+    <button onclick="format('bold')"><i class="fa fa-bold"></i></button>
+    <button onclick="format('italic')"><i class="fa fa-italic"></i></button>
+    <button onclick="format('underline')"><i class="fa fa-underline"></i></button>
+  </div>
+
+  <!-- SIZE -->
+  <div class="group">
+    <button onclick="setFont(12)">12</button>
+    <button onclick="setFont(16)">16</button>
+    <button onclick="setFont(20)">20</button>
+  </div>
+
+  <!-- CELL -->
+  <div class="group">
+    <button onclick="mergeCells()">Merge</button>
+    <button onclick="clearCell()">Clear</button>
+  </div>
+
+</div>
+
+<!-- MENU -->
 <div id="menu" class="menu" onclick="closeMenu(event)">
   <div class="menu-content" onclick="event.stopPropagation()">
 
@@ -33,23 +66,23 @@
 
     <hr>
 
-    <button onclick="toggleDark()">Toggle Dark Mode</button>
+    <button onclick="toggleDark()">Dark Mode</button>
     <button onclick="showAbout()">About</button>
 
   </div>
 </div>
 
-<!-- About -->
+<!-- ABOUT -->
 <div id="about" class="overlay" onclick="closeAbout(event)">
   <div class="overlay-content" onclick="event.stopPropagation()">
     <h2>About Sheet Verse</h2>
-    <p>Advanced spreadsheet app with Excel-like features.</p>
+    <p>Excel-style web spreadsheet.</p>
   </div>
 </div>
 
-<!-- Spreadsheet -->
-<div id="luckysheet" style="margin:0;padding:0;position:absolute;width:100%;height:100%;top:50px;"></div>
+<!-- SHEET -->
+<div id="luckysheet" class="sheet"></div>
 
 <script src="app.js"></script>
 </body>
-</html>
+  </html>
