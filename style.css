@@ -1,6 +1,5 @@
 body { margin:0; font-family:sans-serif; }
 
-/* Topbar */
 .topbar {
   height:50px;
   background:#1976d2;
@@ -12,7 +11,27 @@ body { margin:0; font-family:sans-serif; }
 
 .title { flex:1; }
 
-/* Menu */
+/* TOOLBAR */
+.toolbar {
+  display:flex;
+  gap:10px;
+  padding:5px;
+  background:#f0f0f0;
+}
+
+.group {
+  display:flex;
+  gap:5px;
+  border-right:1px solid #ccc;
+  padding-right:10px;
+}
+
+button {
+  padding:5px 8px;
+  cursor:pointer;
+}
+
+/* MENU */
 .menu {
   position:fixed;
   width:100%;
@@ -22,13 +41,13 @@ body { margin:0; font-family:sans-serif; }
 }
 
 .menu-content {
-  background:white;
   width:250px;
   height:100%;
+  background:white;
   padding:15px;
 }
 
-/* About */
+/* ABOUT */
 .overlay {
   display:none;
   position:fixed;
@@ -44,12 +63,16 @@ body { margin:0; font-family:sans-serif; }
   width:80%;
 }
 
-/* Dark Mode */
+/* SHEET */
+.sheet {
+  position:absolute;
+  top:100px;
+  width:100%;
+  height:calc(100% - 100px);
+}
+
+/* DARK */
 .dark {
   background:#121212;
   color:white;
-}
-
-.dark .menu-content {
-  background:#1e1e1e;
 }
