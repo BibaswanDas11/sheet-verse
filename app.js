@@ -1,5 +1,3 @@
-let fileName = "Untitled";
-
 document.addEventListener("DOMContentLoaded", () => {
 
   const saved = localStorage.getItem("sheetVerseData");
@@ -12,8 +10,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Auto save
   setInterval(() => {
-    const data = luckysheet.getAllSheets();
-    localStorage.setItem("sheetVerseData", JSON.stringify(data));
+    localStorage.setItem("sheetVerseData",
+      JSON.stringify(luckysheet.getAllSheets()));
   }, 2000);
 
 });
@@ -40,7 +38,7 @@ function closeAbout(e){
   }
 }
 
-// FILE ACTIONS
+// FILE
 function newFile(){
   if(confirm("Clear sheet?")){
     luckysheet.destroy();
@@ -49,17 +47,35 @@ function newFile(){
 }
 
 function saveLocal(){
-  const data = luckysheet.getAllSheets();
-  localStorage.setItem("sheetVerseData", JSON.stringify(data));
+  localStorage.setItem("sheetVerseData",
+    JSON.stringify(luckysheet.getAllSheets()));
   alert("Saved!");
 }
 
 function renameFile(){
-  let name = prompt("Enter file name:", fileName);
-  if(name) fileName = name;
+  let name = prompt("File name:");
 }
 
-// DARK MODE
+// DARK
 function toggleDark(){
   document.body.classList.toggle("dark");
 }
+
+// TOOLBAR FUNCTIONS
+function format(type){
+  if(type==="bold") luckysheet.setRangeFormat("bl", true);
+  if(type==="italic") luckysheet.setRangeFormat("it", true);
+  if(type==="underline") luckysheet.setRangeFormat("un", true);
+}
+
+function setFont(size){
+  luckysheet.setRangeFormat("fs", size);
+}
+
+function mergeCells(){
+  luckysheet.setRangeFormat("mc", { r:0,c:0,rs:1,cs:2 });
+}
+
+function clearCell(){
+  luckysheet.clearRange();
+      }
