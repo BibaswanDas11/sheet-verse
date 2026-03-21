@@ -1,56 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
   <title>Sheet Verse</title>
+
+  <!-- Luckysheet -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/luckysheet/dist/plugins/css/plugins.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/luckysheet/dist/plugins/plugins.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/luckysheet/dist/css/luckysheet.css" />
+
+  <script src="https://cdn.jsdelivr.net/npm/luckysheet/dist/plugins/js/plugin.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/luckysheet/dist/luckysheet.umd.js"></script>
+
   <link rel="stylesheet" href="style.css">
-  <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
 
+<!-- Topbar -->
 <div class="topbar">
-  <span class="menu-btn" onclick="toggleMenu()">☰</span>
+  <span onclick="toggleMenu()">☰</span>
   <span class="title">Sheet Verse</span>
-
-  <button onclick="newFile()">New</button>
-  <button onclick="saveLocal()">Save</button>
-  <button onclick="downloadCSV()">Download</button>
-  <button onclick="saveToDrive()">Drive Save</button>
-
-  <input type="file" onchange="loadFile(event)">
 </div>
 
-<div id="tabs"></div>
-<div id="grid"></div>
+<!-- Overlay Menu -->
+<div id="menu" class="menu" onclick="closeMenu(event)">
+  <div class="menu-content" onclick="event.stopPropagation()">
 
-<!-- Side Menu -->
-<div id="sideMenu" class="side-menu">
-  <h3>Menu</h3>
-  <button onclick="addSheet()">+ New Sheet</button>
-  <button onclick="loadLocal()">Load Local</button>
-  <button onclick="listDriveFiles()">My Drive Files</button>
-  <button onclick="showAbout()">About</button>
+    <h3>Sheet Verse</h3>
 
-  <div id="loginSection">
-    <div id="g_id_onload"
-      data-client_id="YOUR_GOOGLE_CLIENT_ID"
-      data-callback="handleCredentialResponse">
-    </div>
-    <div class="g_id_signin"></div>
+    <button onclick="newFile()">New File</button>
+    <button onclick="saveLocal()">Save</button>
+    <button onclick="renameFile()">Rename</button>
+
+    <hr>
+
+    <button onclick="toggleDark()">Toggle Dark Mode</button>
+    <button onclick="showAbout()">About</button>
+
   </div>
 </div>
 
-<!-- Overlay -->
-<div id="overlay" class="overlay" onclick="closeOverlay()">
+<!-- About -->
+<div id="about" class="overlay" onclick="closeAbout(event)">
   <div class="overlay-content" onclick="event.stopPropagation()">
     <h2>About Sheet Verse</h2>
-    <p>Excel + Google Sheets inspired lightweight app with local + Drive storage.</p>
-    <button onclick="closeOverlay()">Close</button>
+    <p>Advanced spreadsheet app with Excel-like features.</p>
   </div>
 </div>
 
-<script src="script.js"></script>
-<script src="formulas.js"></script>
-<script src="drive.js"></script>
+<!-- Spreadsheet -->
+<div id="luckysheet" style="margin:0;padding:0;position:absolute;width:100%;height:100%;top:50px;"></div>
+
+<script src="app.js"></script>
 </body>
-  </html>
+</html>
