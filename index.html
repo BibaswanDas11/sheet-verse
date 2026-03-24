@@ -1,18 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>Sheet Verse</title>
 
-  <!-- MOBILE ZOOM FIX -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <!-- SEO (Google indexing) -->
+  <meta name="description" content="Sheet Verse - Free online spreadsheet like Excel and Google Sheets">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Luckysheet CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/luckysheet/dist/plugins/css/plugins.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/luckysheet/dist/plugins/plugins.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/luckysheet/dist/css/luckysheet.css">
-
-  <!-- Icons FIX -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <!-- Luckysheet JS -->
   <script src="https://cdn.jsdelivr.net/npm/luckysheet/dist/plugins/js/plugin.js"></script>
@@ -23,40 +22,15 @@
 
 <body>
 
-<!-- TOPBAR -->
+<!-- TOP BAR -->
 <div class="topbar">
-  <span onclick="toggleMenu()">☰</span>
+  <button class="menu-btn" onclick="openMenu()">☰</button>
   <span class="title">Sheet Verse</span>
 </div>
 
-<!-- CUSTOM TOOLBAR -->
-<div class="toolbar">
-
-  <!-- TEXT -->
-  <div class="group">
-    <button onclick="format('bold')"><i class="fa fa-bold"></i></button>
-    <button onclick="format('italic')"><i class="fa fa-italic"></i></button>
-    <button onclick="format('underline')"><i class="fa fa-underline"></i></button>
-  </div>
-
-  <!-- SIZE -->
-  <div class="group">
-    <button onclick="setFont(12)">12</button>
-    <button onclick="setFont(16)">16</button>
-    <button onclick="setFont(20)">20</button>
-  </div>
-
-  <!-- CELL -->
-  <div class="group">
-    <button onclick="mergeCells()">Merge</button>
-    <button onclick="clearCell()">Clear</button>
-  </div>
-
-</div>
-
-<!-- MENU -->
-<div id="menu" class="menu" onclick="closeMenu(event)">
-  <div class="menu-content" onclick="event.stopPropagation()">
+<!-- SIDE MENU -->
+<div id="menu" class="menu">
+  <div class="menu-content">
 
     <h3>Sheet Verse</h3>
 
@@ -73,16 +47,17 @@
 </div>
 
 <!-- ABOUT -->
-<div id="about" class="overlay" onclick="closeAbout(event)">
-  <div class="overlay-content" onclick="event.stopPropagation()">
+<div id="about" class="overlay">
+  <div class="overlay-content">
     <h2>About Sheet Verse</h2>
-    <p>Excel-style web spreadsheet.</p>
+    <p>Free spreadsheet app like Excel.</p>
+    <button onclick="closeAbout()">Close</button>
   </div>
 </div>
 
 <!-- SHEET -->
-<div id="luckysheet" class="sheet"></div>
+<div id="luckysheet"></div>
 
 <script src="app.js"></script>
 </body>
-  </html>
+</html>
