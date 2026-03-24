@@ -4,11 +4,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   luckysheet.create({
     container: 'luckysheet',
+
+    /* 🔥 IMPORTANT: enable full toolbar */
+    showtoolbar: true,
     showinfobar: false,
+
     data: saved ? JSON.parse(saved) : [{}]
   });
 
-  // Auto save
+  // Auto Save
   setInterval(() => {
     localStorage.setItem("sheetVerseData",
       JSON.stringify(luckysheet.getAllSheets()));
@@ -17,32 +21,38 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // MENU
-function toggleMenu(){
-  document.getElementById("menu").style.display="block";
+function openMenu(){
+  document.getElementById("menu").classList.add("open");
 }
 
-function closeMenu(e){
-  if(e.target.id==="menu"){
-    document.getElementById("menu").style.display="none";
+document.addEventListener("click", function(e){
+  const menu = document.getElementById("menu");
+
+  if(menu.classList.contains("open")){
+    if(!e.target.closest(".menu-content") && !e.target.closest(".menu-btn")){
+      menu.classList.remove("open");
+    }
   }
-}
+});
 
 // ABOUT
 function showAbout(){
   document.getElementById("about").style.display="block";
 }
 
-function closeAbout(e){
-  if(e.target.id==="about"){
-    document.getElementById("about").style.display="none";
-  }
+function closeAbout(){
+  document.getElementById("about").style.display="none";
 }
 
 // FILE
 function newFile(){
   if(confirm("Clear sheet?")){
     luckysheet.destroy();
-    luckysheet.create({ container:'luckysheet', data:[{}] });
+    luckysheet.create({
+      container:'luckysheet',
+      showtoolbar:true,
+      data:[{}]
+    });
   }
 }
 
@@ -60,22 +70,3 @@ function renameFile(){
 function toggleDark(){
   document.body.classList.toggle("dark");
 }
-
-// TOOLBAR FUNCTIONS
-function format(type){
-  if(type==="bold") luckysheet.setRangeFormat("bl", true);
-  if(type==="italic") luckysheet.setRangeFormat("it", true);
-  if(type==="underline") luckysheet.setRangeFormat("un", true);
-}
-
-function setFont(size){
-  luckysheet.setRangeFormat("fs", size);
-}
-
-function mergeCells(){
-  luckysheet.setRangeFormat("mc", { r:0,c:0,rs:1,cs:2 });
-}
-
-function clearCell(){
-  luckysheet.clearRange();
-      }
